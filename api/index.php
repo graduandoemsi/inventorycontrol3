@@ -36,16 +36,11 @@ $app->post('/products/',  function () use($app){
   //Recuperando o valor do post
  $products =json_decode($app->request->getBody(), true);
  //atribuição do valor para o objeto que vai ser persistido no banco.
- $produto = new Produto();
- $produto->setCategoria_produto_id($products["categoria"]);
- $produto->setDescricao($products["descricao"]);
- $produto->setStatus($products["status"]);
- $produtoDAO = new ProdutoDAO();
- $produtoDAO->insert($produto);
+ 
 });
 
 //Cadastro de categorias de produtos
-$app->post('/category',  function () use($app){
+$app->post('/category/',  function () use($app){
   //Recuperando o valor do post
  $categoriesProducts =json_decode($app->request->getBody(), true);
  //atribuição do valor para o objeto que vai ser persistido no banco.

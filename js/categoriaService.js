@@ -26,7 +26,7 @@ var CategoriaService={
             contentType: 'application/json',
             url: '../api/category',
             dataType: "json",
-            data: JSON.stringify(category),
+            data: JSON.stringify({descricao:category}),
             success: function (data) {
                 console.log('Categoria criada com sucesso!');
                 callback(data);

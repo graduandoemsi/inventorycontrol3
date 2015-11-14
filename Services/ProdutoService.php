@@ -14,12 +14,15 @@
 class ProdutoService {
     public function insertProduto($response) {
         if (isset($response)){
+            $produto = new Produto();
             $produto->setCategoria_produto_id($products["categoria"]);
             $produto->setDescricao($products["descricao"]);
             $produto->setStatus($products["status"]);
             $produtoDAO = new ProdutoDAO();
             $produtoDAO->insert($produto);
+         
         }
+        
     }
 
 }
