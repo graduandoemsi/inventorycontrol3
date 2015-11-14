@@ -14,27 +14,19 @@ and open the template in the editor.
     <body >
         <div>
             <form >
+               
                 <fieldset  id="resolucao">
                     <legend>Estoque</legend>
-                        <div class="campo">
-                            <label >Categoria</label>
-                            <select class="campo_estoque" ></select>                   
-                            <label >Código</label>
-                            <input class="campo_estoque" type="text" id="codigo" >
-                            <label >Marca</label>
-                            <input class="campo_estoque" type="text" id="codigo" >
-                            <label >Produto</label>
-                            <input class="campo_estoque" type="text" id="codigo" >                            
-                        </div>
+                    <div class="button_lengh">
+                        <input type="button" class="button" value="limpar">                        
+                        <input type="submit" class="button" value="Executar">                        
+                    </div> 
                 </fieldset>
             </form>
                     <table id="resolucao">
                         <tr>
                             <th class="campo_estoque">Descrição</th>
                             <th class="campo_estoque">Quantidade</th>
-                            <th class="campo_estoque">Status</th>
-                            <th class="campo_estoque">Quantidade Mínima</th>
-                            <th class="campo_estoque">Quantidade Máxima</th>
                         </tr>
                         <tr>
                             <div id="apresentacao"></div>
