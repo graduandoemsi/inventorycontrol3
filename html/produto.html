@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>produto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../asset/CSS/principal.css" />
+    </head>
+    <body>
+        <div class="form">
+            <form >
+                <fieldset>
+                    <legend>Cadastrar produto</legend>
+                    <div class="campo">  
+                        <label>Categoria:</label>
+                        <select  id="categories">                    
+                        </select>                    
+                    </div>
+                      <div class="campo"> 
+                        <label>Descrição:</label>
+                        <input type="text" class="comp_campo" id="descricao" required >                    
+                    </div>
+                    <div class="campo">
+                        <label>Status:</label>
+                        <select  id="status">                    
+                        </select>                       
+                    </div>
+                    <div>  
+                        <input type="submit" value="Cadastrar">                    
+                    </div>
+                    <div id="result">
+                        
+                    </div>
+                </fieldset>
+            </form>      
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="../js/categoriaService.js"></script>
+        <script src="../js/statusService.js"></script>
+        <script src="../js/produtoService.js"></script>
+        <script src="../js/produtoController.js"></script>
+    </body>
+</html>

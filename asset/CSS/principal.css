@@ -1,0 +1,62 @@
+body{
+    background-color: cadetblue;
+    
+}
+.form{
+    padding-top: 20%;
+    padding-left:40%;
+    padding-right: 40%;
+}
+.campo{
+    padding: 2px;
+    border: 2px;
+    margin: 2px;
+}
+
+#select{
+    width: 100%;
+    padding: 1%;
+}
+.comp_campo{
+    width: 98%;
+    padding: 1%;
+}
+.comp_campo_buton{
+    width: 97%;
+}
+.nome{
+    width: 165px;
+}
+.campo_data{
+    padding: 1px;
+    border: 1px;
+    margin: 1px;
+}
+fieldset{
+    width: 320px;
+}
+.button{
+    width: 48%;
+    float: left;
+    padding: 1%;
+    margin: 1%;
+}
+.button_lengh{
+    width: 100%;
+}
+.estoque{
+    width: 98%;
+}
+.campo_estoque{
+    width: 20%;
+}
+#resolucao{
+    width: 1366px;
+    height: 768;
+    max-width: 98%;
+    max-height: 90%;
+    
+}
+.direita{
+    float: right;
+}

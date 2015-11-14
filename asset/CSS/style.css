@@ -1,0 +1,22 @@
+
+#link:hover {
+    top:-2px;
+    box-shadow:0 2px 2px #666
+}
+
+body {
+    background-image: url(../../images/controle.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:  fixed;
+    background-position: center;
+    opacity:0.95;
+	-moz-opacity: 0.35;
+	filter: alpha(opacity=35);
+}
+.image{
+    width: 200px;
+    height: 200px;
+    max-width: 100%;
+    max-height: 100%;
+}

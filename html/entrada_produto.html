@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Entrada Produto</title>
+       <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../asset/CSS/principal.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+      <!--  <script src="http://code.jquery.com/jquery-1.8.2.js"></script>  --> 
+      <!--   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> --> 
+      <!--  <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script> ->
+       <!-- <script language="JavaScript" src="../js/calendar.js"></script> -->
+    </head>
+    <body>
+        <div class="form">
+            <form >
+                <fieldset>
+                    <legend>Entrada de produto</legend>
+                    <div>Data:
+                        <input type="text" name="data" id="data" size="10" maxlength="10"/>
+                    </div>
+                    <div class="campo">
+                        <label>Categoria de Produto</label>                        
+                        <select id="catProdutos">
+
+                        </select>                        
+                    </div>
+                    <div class="campo">
+                        <label>Identificação do produto:</label>                        
+                       <select id="products">
+
+                       </select>                        
+                    </div>
+                    <div class="campo">
+                        <label>Quantidade:</label>                        
+                        <input type="text" class="comp_campo" id="quantidade" required>                        
+                    </div>               
+                    <div class="button_lengh">
+                        <input type="button" class="button" value="limpar">                        
+                        <input type="submit" class="button" value="Executar">                        
+                    </div>
+                </fieldset>                
+            </form>
+            
+        </div> 
+   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="../js/categoriaService.js"></script> 
+       <script src="../js/produtoService.js"></script> 
+        <script src="../js/EntradaProdutoService.js"></script>
+        <script src="../js/EntradaProdutoController.js"></script> 
+    </body>
+</html>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="asset/CSS/style.css">
+        <link rel="stylesheet" href="asset/CSS/principal.css">
+
+    </head>
+    <body>
+
+        <form action="" class="form">
+
+            <fieldset>
+                <legend>Login</legend>
+
+                <div>
+                    <label>
+                        Username
+                        <input class="comp_campo" type="text" size="30" maxlength="30" id="login" required>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password
+                        <input class="comp_campo" type="password" id="senha" required>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+                <input class="button" type="submit" id="entrar" value="Sign in" /> 
+            </fieldset>  
+            <fieldset>
+                <label>
+                    <input type="button" value="I am not registered" class="comp_campo_buton">
+                </label>
+            </fieldset>
+        </form>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="js/userService.js"></script>
+        <script src="js/usuarioController.js"></script> 
+    </body>
+</html>
