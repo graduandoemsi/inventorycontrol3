@@ -19,5 +19,23 @@ var CategoriaService={
            
          });    
     
+    },
+    AddCategory:function(category, callback){
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: '../api/category',
+            dataType: "json",
+            data: JSON.stringify(category),
+            success: function (data) {
+                console.log('Categoria criada com sucesso!');
+                callback(data);
+            },
+            error: function () {
+                //console.log('Error: ' + textStatus);
+                callback(null);
+            }
+        });        
+        
     }
 }
