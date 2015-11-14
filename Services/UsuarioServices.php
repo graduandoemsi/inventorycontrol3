@@ -37,7 +37,7 @@ class UsuarioServices {
             );
             }
         } else {
-            $a = null;
+           
 
             $responseJson = array(
                 mensagem => "Por favor informe seu usuário e senha",
