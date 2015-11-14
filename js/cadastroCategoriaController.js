@@ -17,7 +17,7 @@ var CadastroCategoriaController = {
             CadastroCategoriaController.showResult(result);
         }; 
             
-        CategoriaService.add(categoria,callback); 
+        CategoriaService.AddCategory(categoria,callback); 
     },
     showResult:function(){
         
