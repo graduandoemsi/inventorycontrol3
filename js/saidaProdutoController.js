@@ -3,7 +3,7 @@ var SaidaProdutoController ={
     init:function(){
         SaidaProdutoController.setForm();
         SaidaProdutoController.setSelect();
-       // SaidaProdutoController.showProducts();
+       
         SaidaProdutoController.showCategory();
       
     },

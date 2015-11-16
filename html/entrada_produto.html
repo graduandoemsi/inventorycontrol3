@@ -25,30 +25,38 @@ and open the template in the editor.
                         <input type="text" name="data" id="data" size="10" maxlength="10"/>
                     </div>
                     <div class="campo">
-                        <label>Categoria de Produto</label>   
-                    </div>    
-                    <div>
-                        <select id="catProdutos" class="comp_campo">
+                        <label>Categoria de Produto</label>                        
+                        <select id="catProdutos">
+
                         </select>                        
                     </div>
                     <div class="campo">
-                        <label>Descrição</label> 
-                    </div>    
-                    <div>
-                       <input type="text" class="comp_campo" id="descricao" required>                        
+                        <label>Identificação do produto:</label>                        
+                       <select id="products">
+
+                       </select>                        
                     </div>
                     <div class="campo">
                         <label>Quantidade:</label>                        
-                        <input type="number" class="comp_campo" id="quantidade" required>                        
+                        <input type="text" class="comp_campo" id="quantidade">                        
                     </div>               
                     <div class="button_lengh">
                         <input type="button" class="button" value="limpar">                        
                         <input type="submit" class="button" value="Executar">                        
                     </div>
+                   
                 </fieldset>                
             </form>
-            
+             <div id="resposta"></div>
         </div> 
+        <script type="text/javascript">
+        function RefreshParent() {
+            if (window.opener != null && !window.opener.closed) {
+                window.opener.location.reload();
+            }
+        }
+        window.onbeforeunload = RefreshParent;
+    </script>
    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="../js/categoriaService.js"></script> 
        <script src="../js/produtoService.js"></script> 

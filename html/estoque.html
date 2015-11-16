@@ -6,32 +6,38 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>estoque</title>
+        <title>Estoque</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../asset/CSS/principal.css" />
+        
     </head>
     <body >
         <div>
             <form >
-               
+
                 <fieldset  id="resolucao">
                     <legend>Estoque</legend>
                     <div class="button_lengh">
-                        <input type="button" class="button" value="limpar">                        
-                        <input type="submit" class="button" value="Executar">                        
+                        <input type="button" class="button" value="Entrada de Produtos" id="entrada">                        
+                        <input type="submit" class="button" value="Saída de Produtos" id="saida">                        
                     </div> 
                 </fieldset>
             </form>
-                    <table id="resolucao">
-                        <tr>
-                            <th class="campo_estoque">Descrição</th>
-                            <th class="campo_estoque">Quantidade</th>
-                        </tr>
-                        <tr>
-                            <div id="apresentacao"></div>
-                        </tr>                        
-                    </table>            
+            <table id="resolucao" >
+                <thead>
+                    <tr>
+                        <th class="campo_estoque">Descrição</th>
+                        <th class="campo_estoque">Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody id="estoque">
+                </tbody>
+            </table>            
         </div>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+         <script src="../js/EstoqueService.js"></script>
+        <script src="../js/EstoqueController.js"></script>
+        
     </body>
 </html>

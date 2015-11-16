@@ -2,11 +2,13 @@
 require 'vendor/autoload.php';
 require_once ('..\dao\conexaoBanco.php');
 require_once '..\dao\CategoriaProdutoDAO.php';
-require_once '..\dao\ProdutoDAO.php';
+require_once '..\services\ProdutoService.php';
 require_once '..\dao\StatusProdutoDAO.php';
 require_once '..\dao\SaidaProdutoDAO.php';
 require_once '..\dao\EntradaProdutoDAO.php';
 require_once ('..\services\usuarioservices.php');
+require_once ('..\services\EstoqueServices.php');
+require_once ('..\services\EntradaProdutoService.php');
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -35,7 +37,9 @@ $app->get('/products/category/:categoryId',  function ($categoryId) use($app){
 $app->post('/products/',  function () use($app){
   //Recuperando o valor do post
  $products =json_decode($app->request->getBody(), true);
- //atribuição do valor para o objeto que vai ser persistido no banco.
+ 
+ $produtoService = new ProdutoService();
+ $produtoService->insertProduto($products);
  
 });
 
@@ -83,12 +87,11 @@ $app->post('/outPutProducts/', function() use($app){
 $app->post('/inputProducts/', function() use($app){
     $app->response()->header('Content-Type', 'application/json');
     $inputProducts =json_decode($app->request->getBody(), true);
-    $entradaProduto = new EntradaProduto();
-    $entradaProduto->setId_produto($inputProducts["idProduto"]);
-    $entradaProduto->setQuantidade($inputProducts["quantidade"]);
-    $entradaProduto->setData($inputProducts["data"]);
-    $entradaProdutoDAO = new EntradaProdutoDAO();
-    $entradaProdutoDAO->insert($entradaProduto);
+    $entradaProdutoService = new EntradaProdutoService();
+    $response =$entradaProdutoService->insert($inputProducts);
+    
+    echo $response;
+   
     
 });
 
@@ -104,7 +107,17 @@ $app->post('/users/',  function () use($app){
 
 
 
-//categorias
+//estoque
+
+$app->get('/inventories',  function () use($app){
+    
+    $app->response()->header('Content-Type', 'application/json');
+    $estoqueServices = new EstoqueServices();
+    $estoque = $estoqueServices->getEstoque();
+    
+    echo $estoque;
+
+});
 
 
 $app->run();

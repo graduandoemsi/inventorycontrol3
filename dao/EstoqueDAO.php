@@ -1,7 +1,7 @@
 <?php
-require_once 'dao\conexaoBanco.php';
-require_once 'to\Estoque.php';
-require_once 'dao\Crud.php';
+require_once '..\dao\conexaoBanco.php';
+require_once '..\to\Estoque.php';
+require_once '..\dao\Crud.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -42,7 +42,7 @@ class EstoqueDAO implements Crud {
         
     }
 
-    public function insert(Estoque $obj) {
+    public function insert( $obj) {
         try {
         $conexao = ConexaoBanco::getInstance()->getConnection();
         $sql = "insert into estoque (id_produto,quantidade) values (:id_produto,:quantidade)";
@@ -76,7 +76,7 @@ class EstoqueDAO implements Crud {
        . "from  estoque inner join produto on produto.id = estoque.id_produto order by descricao asc";
         $prepare = $conexao->prepare($sql);
         $prepare->execute();
-        $result = $prepare->fetch(PDO::FETCH_ASSOC);
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

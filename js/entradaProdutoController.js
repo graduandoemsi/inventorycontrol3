@@ -3,9 +3,8 @@ var EntradaProdutoController ={
     init:function(){
         EntradaProdutoController.setForm();
         EntradaProdutoController.setSelect();
-       // SaidaProdutoController.showProducts();
         EntradaProdutoController.showCategory();
-      
+     
     },
     setForm:function(){
           var form = document.querySelector('form');
@@ -35,8 +34,8 @@ var EntradaProdutoController ={
             
        EntradaProdutoService.add(saidaProduto,callback);
     },
-    showResult:function(){
-        
+    showResult:function(data){
+       document.getElementById("resposta").innerHTML=data.mensagem;
     },
      showCategory:function (){
             CategoriaService.GetCategory(function(categories) {
@@ -55,6 +54,14 @@ var EntradaProdutoController ={
             $.each(data, function(key,val){
                  $select.append('<option id="' + val.id + '">' + val.descricao + '</option>');
             });
+    },
+    parentPage:function(){
+       
+            if (window.opener != null && !window.opener.closed) {
+                window.opener.location.reload();
+            }
+          
+        
     }
         
 }
