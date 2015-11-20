@@ -1,6 +1,6 @@
 <?php
 
-require_once ('..\dao\EntradaProdutoDAO.php');
+require_once ('../dao/EntradaProdutoDAO.php');
 
 /**
  * Description of EntradaProdutoService

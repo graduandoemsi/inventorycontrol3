@@ -18,7 +18,7 @@ var ProdutoController ={
     register:function(){
           var produto = {
 		descricao: $("#descricao").val(),
-		status: $("#status").val(),
+		status: $("#status").children(":selected").attr("id"),
                 categoria:$('#categories').children(":selected").attr("id")
             };
             var callback=function (result){
@@ -48,8 +48,9 @@ var ProdutoController ={
                  $select.append('<option id="' + val.id + '">' + val.descricao + '</option>');
             });
 	},
-    showResult:function (result){
-            
+    showResult:function (data){
+          
+            document.getElementById("result").innerHTML = data.mensagem;  
         }
     
 };

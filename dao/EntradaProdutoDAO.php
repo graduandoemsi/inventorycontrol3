@@ -1,7 +1,7 @@
 <?php
-require_once '..\dao\conexaoBanco.php';
-require_once '..\to\EntradaProduto.php';
-require_once '..\dao\Crud.php';
+require_once '../dao/conexaoBanco.php';
+require_once '../to/EntradaProduto.php';
+require_once '../dao/Crud.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.

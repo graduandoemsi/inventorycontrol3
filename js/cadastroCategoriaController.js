@@ -11,7 +11,7 @@ var CadastroCategoriaController = {
     },
     add:function(){
         var categoria = document.getElementById("descricao").value;
-        alert("aqui");
+       
         
         var callback=function (result){
             CadastroCategoriaController.showResult(result);
@@ -19,8 +19,8 @@ var CadastroCategoriaController = {
             
         CategoriaService.AddCategory(categoria,callback); 
     },
-    showResult:function(){
-        
+    showResult:function(data){
+        document.getElementById("resposta").innerHTML = data.mensagem; 
     }
    
     

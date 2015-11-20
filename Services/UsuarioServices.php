@@ -26,20 +26,20 @@ class UsuarioServices {
             if ($respostaBanco == null) {
                 $responseJson = array(
                     mensagem => "Usuário ou senha inválidos!",
-                    resposta=> FALSE
+                    resposta => FALSE
                 );
 
                 return json_encode($responseJson);
             } else {
-                 $responseJson = array(
-                mensagem => "Logado com sucesso!",
-                resposta=> TRUE
-            );
+                $responseJson = array(
+                    mensagem => "Logado com sucesso!",
+                    resposta => TRUE
+                );
             }
         } else {
             $responseJson = array(
                 mensagem => "Por favor informe seu usuário e senha",
-                resposta=> FALSE
+                resposta => FALSE
             );
             return json_encode($responseJson);
         }
@@ -47,15 +47,33 @@ class UsuarioServices {
 
     public static function cadastrar($response) {
 
-        if (isset($response)) {
+        if (isset($response["login"]) && isset($response["senha"]) && isset($response["categoria_id"])) {
             $usuario = new Usuario();
             $usuarioDAO = new UsuarioDAO();
             $usuario->setCategoria_id($response["categoria_id"]);
             $usuario->setLogin($response["login"]);
             $usuario->setSenha($response["senha"]);
-            $usuarioDAO->insert($usuario);
+            $id = $usuarioDAO->insert($usuario);
+            if ($id) {
+                $responseJson = array(
+                    "mensagem" => "Usuário cadastrado com sucesso!!",
+                    "resposta" => TRUE
+                );
+                return json_encode($responseJson);
+            } else {
+                $responseJson = array(
+                    "mensagem" => "Usuário não foi cadastrado!",
+                    "resposta" => FALSE
+                );
+                return json_encode($responseJson);
+            }
         } else {
-            
+
+            $responseJson = array(
+                "mensagem" => "Por favor informar os campos!",
+                "resposta" => FALSE
+            );
+            return json_encode($responseJson);
         }
     }
 

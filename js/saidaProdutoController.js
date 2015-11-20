@@ -35,8 +35,8 @@ var SaidaProdutoController ={
             
        SaidaProdutoService.add(saidaProduto,callback);
     },
-    showResult:function(){
-        
+    showResult:function(data){
+         document.getElementById("resposta").innerHTML = data.mensagem;
     },
      showCategory:function (){
             CategoriaService.GetCategory(function(categories) {

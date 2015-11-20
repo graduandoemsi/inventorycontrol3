@@ -12,16 +12,36 @@ require_once ('..\dao\ProdutoDAO.php');
  * @author Note
  */
 class ProdutoService {
-    public function insertProduto($response) {
-        if (isset($response)){
+    public function insertProduto($request) {
+        if (isset($request["categoria"])&& isset($request["descricao"])&& isset($request["status"])&& is_numeric($request["status"])){
             $produto = new Produto();
-            $produto->setCategoria_produto_id($products["categoria"]);
-            $produto->setDescricao($products["descricao"]);
-            $produto->setStatus($products["status"]);
+            $produto->setCategoria_produto_id($request["categoria"]);
+            $produto->setDescricao($request["descricao"]);
+            $produto->setStatus($request["status"]);
             $produtoDAO = new ProdutoDAO();
-            $produtoDAO->insert($produto);
+            $id=$produtoDAO->insert($produto);            
+              if ($id) {
+                $responseJson = array(
+                    "mensagem" => "Produto inserido com sucesso!!",
+                    "resposta" => TRUE
+                );
+                return json_encode($responseJson);
+            } else {
+                    $responseJson = array(
+                    "mensagem" => "Produto não inserido!",
+                    "resposta" => FALSE
+                );
+                return json_encode($responseJson);
+            }
          
+        }else {
+            $responseJson = array(
+                "mensagem" => "Por favor informar todos os dados!",
+                "resposta" => false
+            );
+             return json_encode($responseJson);
         }
+           
         
     }
 

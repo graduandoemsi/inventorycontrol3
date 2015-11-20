@@ -1,7 +1,7 @@
 <?php
-require_once 'dao\conexaoBanco.php';
-require_once 'to\CategoriaUsuario.php';
-require_once 'dao\Crud.php';
+require_once 'dao/conexaoBanco.php';
+require_once 'to/CategoriaUsuario.php';
+require_once 'dao/Crud.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

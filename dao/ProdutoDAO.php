@@ -48,9 +48,10 @@ class ProdutoDAO implements Crud {
         $sql = "insert into produto (descricao,status,categoria_produto_id) values (:descricao,:status,:categoria_produto_id)";
         $prepare = $conexao->prepare($sql);
         $prepare->bindValue(":descricao",$obj->getDescricao());
-        $prepare->bindValue(":status",$obj->getStatus());
+        $prepare->bindValue(":status",$obj->getStatus(),PDO::PARAM_INT);
         $prepare->bindValue(":categoria_produto_id",$obj->getCategoria_produto_id());
         $prepare->execute();
+        
         $id=$conexao->lastInsertId();
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -90,7 +91,7 @@ class ProdutoDAO implements Crud {
     public function getProductByCategory($categoryId){
          try {
         $conexao = ConexaoBanco::getInstance()->getConnection();
-        $sql = "SELECT * FROM inventorycontrol.produto where categoria_produto_id=:categoria_produto_id and status=1";
+        $sql = "SELECT * FROM produto where categoria_produto_id=:categoria_produto_id and status=1";
         $prepare = $conexao->prepare($sql);
         $prepare->bindValue(":categoria_produto_id",$categoryId);
         $prepare->execute();
@@ -99,6 +100,23 @@ class ProdutoDAO implements Crud {
             echo $e->getMessage();
         }
         return $result;
+    }
+    
+    public function getProductMinimum() {
+        
+         try {
+        $conexao = ConexaoBanco::getInstance()->getConnection();
+        $sql = "select produto.descricao as descricao,estoque.quantidade as quantidade"
+         . " from produto inner join estoque on produto.id = estoque.id_produto"
+         . " where estoque.quantidade <=10";
+        $prepare = $conexao->prepare($sql);        
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+        
     }
 //put your code here
 }
