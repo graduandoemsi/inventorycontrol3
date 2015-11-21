@@ -86,7 +86,7 @@ $app->post('/inputProducts/', function() use($app) {
     echo $response;
 });
 
-$app->post('/users/', function () use($app) {
+$app->post('/users/login', function () use($app) {
     //Recuperando o valor do post
     $response = json_decode($app->request->getBody(), true);
     $jsonResponse = UsuarioServices::login($response);

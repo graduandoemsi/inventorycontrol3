@@ -33,7 +33,8 @@ class UsuarioServices {
             } else {
                 $responseJson = array(
                     mensagem => "Logado com sucesso!",
-                    resposta => TRUE
+                    resposta => TRUE,
+                    url=>"home.html"
                 );
             }
         } else {

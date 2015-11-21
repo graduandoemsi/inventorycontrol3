@@ -15,13 +15,22 @@ var UsuarioController={
         var usuario ={
           login:$('#login').val(),
           senha:$('#senha').val()                    
-      }
+        }
        var callback=function (result){
-            //EntradaProdutoController.showResult(result);
-           // alert("teste");
+           if(result.resposta){
+         UsuarioController.redirect(result);
+       }else{
+           UsuarioController.showResult(result); 
+       }
             }; 
             
        UserService.login(usuario,callback);
+    },
+    showResult:function (data){
+         document.getElementById("resposta").innerHTML = data.mensagem;  
+    },
+    redirect:function (result){
+         window.location=result.url;
     }
     
     

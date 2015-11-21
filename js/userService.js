@@ -5,7 +5,7 @@ var UserService = {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
-            url: '../api/users',
+            url: '../api/users/register',
             dataType: "json",
             data: JSON.stringify(user),
             success: function (user) {
@@ -24,11 +24,11 @@ var UserService = {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
-            url: 'api/users',
+            url: 'api/users/login',
             dataType: "json",
             data: JSON.stringify(usuario),
             success: function (usuario) {
-                console.log('User added successfully');
+                console.log('User connected successfully');
                // callback(usuario);
             },
             error: function () {
