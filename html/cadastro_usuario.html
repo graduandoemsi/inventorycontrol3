@@ -17,6 +17,11 @@ and open the template in the editor.
             <form>
                 <fieldset >
                     <legend>Cadastrar Usuário</legend>
+                     <div class="campo">
+                        <label>Categoria:</label>
+                        <select  id="catUsers" class="comp_campo">                    
+                        </select> 
+                    </div>
                     <div class="campo">
                         <label>Nome</label>
                         <input type="text" class="comp_campo" id="login" required>                        
@@ -25,17 +30,15 @@ and open the template in the editor.
                         <label>Senha</label>
                         <input type="text" class="comp_campo" id="password" required>                        
                     </div>
-                    <div class="campo">
-                        <label>Tipo</label>
-                        <input type="text" class="comp_campo" id="category" required>                        
-                    </div> 
                     <div class="button_lengh">
                         <input type="button" class="button" value="limpar">                        
                         <input type="submit" class="button" value="Cadastrar">                        
-                    </div>                  
+                    </div> 
                 </fieldset> 
             </form>
+            <div id="resposta"></div>
         </div>
     <script src="../js/userController.js"></script>
+    <script src="../js/userService.js"></script>
     </body>
 </html>

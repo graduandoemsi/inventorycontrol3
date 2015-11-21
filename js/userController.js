@@ -2,7 +2,6 @@ var registerUser ={
     
     init:function(){
         registerUser.setForm();
-        //CadastroUsuario.showProducts();
          
     },
     setForm:function(){
@@ -12,23 +11,32 @@ var registerUser ={
           event.preventDefault();
           });
     },
+     setSelect: function () {
+        var select = document.getElementById("catUsers");
+
+        select.addEventListener('change', function (event) {
+            var categoryId = $('#catUsers').children(":selected").attr("id");
+            EntradaProdutoController.showProducts(categoryId);
+        });
+    },   
     adicionar:function(form){
       var user ={
-            //idUsuario:form.,
+            //idUsuario:form.v,
             login:form.login.value,
-            password:form.password.value, 
-            category:form.category.value
+            password:form.password.value,
+            categoria:form.categoria.value
             
         };
-      //alert(login.value + "\n" + password.value + "\n" + category.value);
-       var callback=function (result){
+      form.reset();
+       var callback = function(result){
             registerUser.showResult(result);
-            }; 
-            
-       UserService.add(user,callback);
+       }; 
+        
+          
+       userService.add(user,callback);
     },
     showResult:function(){
-        
+        document.getElementById("resposta").innerHTML = data.mensagem;
     }
     
     /*showProducts:function (){
