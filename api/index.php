@@ -57,10 +57,16 @@ $app->post('/category/', function () use($app) {
 $app->get('/categories', function () use($app) {
 
     $app->response()->header('Content-Type', 'application/json');
-    $categoriaProdutoDAO = new CategoriaProdutoDAO();
-    $categories = $categoriaProdutoDAO->getAll();
-    echo json_encode($categories);
+     $response= CategoriaProdutoServices::getCategories();
+    echo $response;
 });
+$app->get('/categories/user', function () use($app) {
+
+    $app->response()->header('Content-Type', 'application/json');
+     $response= UsuarioServices::getCategoryUser();
+    echo $response;
+});
+
 
 $app->get('/statusProducts', function() use($app) {
     $app->response()->header('Content-Type', 'application/json');
@@ -86,14 +92,23 @@ $app->post('/inputProducts/', function() use($app) {
     echo $response;
 });
 
-$app->post('/users/login', function () use($app) {
+$app->post('/users/login/', function () use($app) {
     //Recuperando o valor do post
     $response = json_decode($app->request->getBody(), true);
     $jsonResponse = UsuarioServices::login($response);
     $app->response()->header('Content-Type', 'application/json');
+   
     echo $jsonResponse;
 });
 
+$app->post('/users/register/', function () use($app) {
+    //Recuperando o valor do post
+    $response = json_decode($app->request->getBody(), true);
+    $tet;
+    $jsonResponse = UsuarioServices::register($response);
+    $app->response()->header('Content-Type', 'application/json');
+     echo $jsonResponse;
+});
 
 
 //estoque

@@ -49,8 +49,9 @@ class UsuarioDAO implements Crud {
             $prepare = $conexao->prepare($sql);
             $prepare->bindValue(":login", $obj->getLogin());
             $prepare->bindValue(":senha", $obj->getSenha());
-            $prepare->bindValue(":categotia", $obj->getCategoria_id());
+            $prepare->bindValue(":categoria_id", $obj->getCategoria_id());
             $prepare->execute();
+            $prepare->errorInfo();
             $id = $conexao->lastInsertId();
         } catch (PDOException $e) {
             echo $e->getMessage();

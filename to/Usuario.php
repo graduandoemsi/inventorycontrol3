@@ -16,6 +16,7 @@ class Usuario {
     private $login;
     private $senha;
     private $categoria_id;
+    private $salt;
     
     function getId() {
         return $this->id;
@@ -50,5 +51,13 @@ class Usuario {
     }
 
 
-    
+    function getSalt() {
+        return $this->salt;
+    }
+
+    function setSalt($salt) {
+        $this->salt = $salt;
+    }
+
+
 }

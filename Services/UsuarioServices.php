@@ -2,6 +2,7 @@
 
 require_once ('..\to\Usuario.php');
 require_once ('..\dao\UsuarioDAO.php');
+require_once ('..\dao\CategoriaUsuarioDAO.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,40 +21,44 @@ class UsuarioServices {
         if (isset($response)) {
             $usuario = new Usuario();
             $usuarioDAO = new UsuarioDAO();
+            
+            $passCrypt = UsuarioServices::codificar($response["senha"]);
             $usuario->setLogin($response["login"]);
-            $usuario->setSenha($response["senha"]);
+            $usuario->setSenha($passCrypt);
             $respostaBanco = $usuarioDAO->login($usuario);
             if ($respostaBanco == null) {
                 $responseJson = array(
-                    mensagem => "Usuário ou senha inválidos!",
-                    resposta => FALSE
+                    "mensagem" => "Usuário ou senha inválidos!",
+                    "resposta" => FALSE
                 );
 
                 return json_encode($responseJson);
             } else {
                 $responseJson = array(
-                    mensagem => "Logado com sucesso!",
-                    resposta => TRUE,
-                    url=>"home.html"
+                    "mensagem" => "Logado com sucesso!",
+                    "resposta" => TRUE,
+                    "url"=>"home.html"
                 );
+                return json_encode($responseJson);
             }
         } else {
             $responseJson = array(
-                mensagem => "Por favor informe seu usuário e senha",
-                resposta => FALSE
+                "mensagem" => "Por favor informe seu usuário e senha",
+                "resposta" => FALSE
             );
             return json_encode($responseJson);
         }
     }
 
-    public static function cadastrar($response) {
-
+    public static function register($response) {
+            $teste;
         if (isset($response["login"]) && isset($response["senha"]) && isset($response["categoria_id"])) {
             $usuario = new Usuario();
             $usuarioDAO = new UsuarioDAO();
+            $passCrypt =UsuarioServices::codificar($response["senha"]);
             $usuario->setCategoria_id($response["categoria_id"]);
             $usuario->setLogin($response["login"]);
-            $usuario->setSenha($response["senha"]);
+            $usuario->setSenha($passCrypt);
             $id = $usuarioDAO->insert($usuario);
             if ($id) {
                 $responseJson = array(
@@ -78,5 +83,17 @@ class UsuarioServices {
         }
     }
 
-    //put your code here
+public static function codificar($password){
+       $salt = "1234";
+       $result = crypt($password, $salt);
+       return $result;
+    }
+    
+    public static function getCategoryUser(){
+         $categoriaUsuarioDAO = new CategoriaUsuarioDAO();
+        $categoriaUsuario = $categoriaUsuarioDAO->getAll();
+        return json_encode($categoriaUsuario);
+    }
+    
+    
 }

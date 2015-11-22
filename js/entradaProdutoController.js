@@ -49,7 +49,8 @@ var EntradaProdutoController = {
     },
     addToHTML: function (data, id) {
         $select = $(id);
-
+        
+        $select.append('<option id="0">Selecione</option>');
         $.each(data, function (key, val) {
             $select.append('<option id="' + val.id + '">' + val.descricao + '</option>');
         });

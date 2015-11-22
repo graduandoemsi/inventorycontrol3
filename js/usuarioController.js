@@ -17,17 +17,18 @@ var UsuarioController={
           senha:$('#senha').val()                    
         }
        var callback=function (result){
-           if(result.resposta){
-         UsuarioController.redirect(result);
+           if(result.resposta==false){
+               UsuarioController.showResult(result);
+        
        }else{
-           UsuarioController.showResult(result); 
+             UsuarioController.redirect(result);
        }
             }; 
             
        UserService.login(usuario,callback);
     },
     showResult:function (data){
-         document.getElementById("resposta").innerHTML = data.mensagem;  
+         document.getElementById("response").innerHTML = data.mensagem;  
     },
     redirect:function (result){
          window.location=result.url;

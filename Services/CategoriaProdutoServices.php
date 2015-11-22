@@ -37,5 +37,11 @@ class CategoriaProdutoServices {
             return json_encode($responseJson);
         }
     }
+    
+    public static function getCategories(){
+    $categoriaProdutoDAO = new CategoriaProdutoDAO();
+    $categories = $categoriaProdutoDAO->getAll();
+    echo json_encode($categories);
+    }
 
 }

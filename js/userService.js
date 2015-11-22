@@ -1,7 +1,7 @@
 var UserService = {
     add: function (user, callback) {
         //alert(user.login.value + "\n" + user.password.value + "\n" + user.category.value);
-        alert("aqui");
+        
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -29,7 +29,7 @@ var UserService = {
             data: JSON.stringify(usuario),
             success: function (usuario) {
                 console.log('User connected successfully');
-               // callback(usuario);
+                callback(usuario);
             },
             error: function () {
                 //console.log('Error: ' + textStatus);
@@ -37,6 +37,21 @@ var UserService = {
             }
         });
 
+    },
+    getCategoryUser:function (callback){
+            $.ajax({
+            type: 'GET',
+	    url: '../api/categories/user',
+	    dataType: "json", 
+	    success: function(response) {
+            callback(response);
+            
+            },
+            error:function (){
+                callback(null);
+            }
+           
+         });
     }
 
 };

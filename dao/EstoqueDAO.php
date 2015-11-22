@@ -30,7 +30,7 @@ class EstoqueDAO implements Crud {
     public function get($id) {
          try {
         $conexao = ConexaoBanco::getInstance()->getConnection();
-        $sql = "select * from estoque where id=:id";
+        $sql = "select * from estoque where id_produto=:id";
         $prepare = $conexao->prepare($sql);
         $prepare->bindValue(":id",$id);
         $prepare->execute();

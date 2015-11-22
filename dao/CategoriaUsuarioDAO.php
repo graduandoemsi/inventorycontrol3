@@ -1,7 +1,7 @@
 <?php
-require_once 'dao/conexaoBanco.php';
-require_once 'to/CategoriaUsuario.php';
-require_once 'dao/Crud.php';
+require_once '../dao/conexaoBanco.php';
+require_once '../to/CategoriaUsuario.php';
+require_once '../dao/Crud.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -65,6 +65,20 @@ class CategoriaUsuarioDAO implements Crud {
         }catch (PDOException $e) {
             echo $e->getMessage();
         }
+        
+    }
+    
+       public function getAll() {
+         try {
+        $conexao = ConexaoBanco::getInstance()->getConnection();
+        $sql = "select * from categoria_usuario";
+        $prepare = $conexao->prepare($sql);      
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
         
     }
 
