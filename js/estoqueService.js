@@ -2,7 +2,7 @@ var EstoqueServices = {
     get: function (callback) {
         $.ajax({
             type: 'GET',
-            url: '../api/report/minimuminventory',
+            url: '../api/inventories',
             dataType: "json",
             success: function (response) {
                 callback(response);

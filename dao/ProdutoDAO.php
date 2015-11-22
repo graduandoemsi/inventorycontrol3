@@ -108,7 +108,7 @@ class ProdutoDAO implements Crud {
         $conexao = ConexaoBanco::getInstance()->getConnection();
         $sql = "select produto.descricao as descricao,estoque.quantidade as quantidade"
          . " from produto inner join estoque on produto.id = estoque.id_produto"
-         . " where estoque.quantidade <=10";
+         . " where estoque.quantidade <=10 and estoque.quantidade > 0 order by estoque.quantidade asc";
         $prepare = $conexao->prepare($sql);        
         $prepare->execute();
         $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
