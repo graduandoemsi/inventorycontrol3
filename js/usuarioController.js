@@ -16,16 +16,17 @@ var UsuarioController={
           login:$('#login').val(),
           senha:$('#senha').val()                    
         }
-       var callback=function (result){
-           if(result.resposta==false){
-               UsuarioController.showResult(result);
-        
-       }else{
-             UsuarioController.redirect(result);
-       }
-            }; 
+        var callback=function (result){
+            if(result.resposta==false){
+                UsuarioController.showResult(result);
+
+            }else{
+                  UsuarioController.redirect(result);
+            }
+    }; 
             
        UserService.login(usuario,callback);
+       document.form.reset();
     },
     showResult:function (data){
          document.getElementById("response").innerHTML = data.mensagem;  

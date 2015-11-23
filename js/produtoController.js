@@ -26,7 +26,7 @@ var ProdutoController ={
             }; 
             
             ProdutoService.add(produto,callback);
-       
+            document.form.reset();
         
     },
     //Método de chamada para obter a lista de categorias de produtos

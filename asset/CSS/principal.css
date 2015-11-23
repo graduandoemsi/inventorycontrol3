@@ -3,7 +3,7 @@ body{
     
 }
 .form{
-    padding-top: 20%;
+    padding-top: 15%;
     padding-left:40%;
     padding-right: 40%;
 }
@@ -59,4 +59,9 @@ fieldset{
 }
 .direita{
     float: right;
+}
+.resultado{
+    font-family: "Times New Roman";
+    font-size: 30px;
+    width: 320px;
 }

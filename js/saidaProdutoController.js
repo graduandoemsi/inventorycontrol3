@@ -22,6 +22,7 @@ var SaidaProdutoController ={
          var categoryId= $('#catProdutos').children(":selected").attr("id");
          SaidaProdutoController.showProducts(categoryId);
       });
+      document.form.reset();
     },
     decrementInventory:function(form){
       var saidaProduto ={
