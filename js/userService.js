@@ -1,6 +1,5 @@
 var UserService = {
     add: function (user, callback) {
-        //alert(user.login.value + "\n" + user.password.value + "\n" + user.category.value);
         
         $.ajax({
             type: 'POST',

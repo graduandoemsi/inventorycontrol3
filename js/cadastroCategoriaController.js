@@ -18,6 +18,7 @@ var CadastroCategoriaController = {
         }; 
             
         CategoriaService.AddCategory(categoria,callback); 
+        document.form.reset();
     },
     showResult:function(data){
         document.getElementById("resposta").innerHTML = data.mensagem; 
