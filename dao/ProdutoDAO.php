@@ -88,6 +88,20 @@ class ProdutoDAO implements Crud {
         
     }
     
+       public function getInactive() {
+         try {
+        $conexao = ConexaoBanco::getInstance()->getConnection();
+        $sql = "select * from produto where status =2";
+        $prepare = $conexao->prepare($sql);        
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+        
+    }
+    
     public function getProductByCategory($categoryId){
          try {
         $conexao = ConexaoBanco::getInstance()->getConnection();
@@ -116,6 +130,21 @@ class ProdutoDAO implements Crud {
             echo $e->getMessage();
         }
         return $result;
+        
+    }
+     public function enableProduct($id) {
+         try {
+        $conexao = ConexaoBanco::getInstance()->getConnection();
+        $sql = "update produto set status=1  where id=:id";
+        $prepare = $conexao->prepare($sql);
+         
+        $prepare->bindValue(":id",$id);
+       
+        $prepare->execute();
+       return $prepare->rowCount();
+        }catch (PDOException $e) {
+            echo $e->getMessage();
+        }
         
     }
 //put your code here

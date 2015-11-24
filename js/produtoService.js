@@ -19,6 +19,23 @@ var ProdutoService = {
 
 
    },
+    getProductsInactive: function (callback) {
+        $.ajax({
+            type: 'GET',
+	    url: '../api/products/inactive',
+	    dataType: "json", 
+	    success: function(response) {
+            callback(response);
+            
+            },
+            error:function (){
+                callback(null);
+            }
+           
+         }); 
+
+    },
+   
     getProductsActive: function (callback) {
         $.ajax({
             type: 'GET',
@@ -50,6 +67,20 @@ var ProdutoService = {
            
          }); 
 
+    },
+    update:function (id,callback){
+         $.ajax({
+            type: 'PUT',
+	    url: '../api/products/enable/'+id,	    
+	    success: function(response) {
+            callback(response);
+            
+            },
+            error:function (){
+                callback(null);
+            }
+           
+         }); 
     }
 
 

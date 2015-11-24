@@ -52,11 +52,25 @@ class ProdutoService {
         return json_encode($products);
     }
     
+     public static function getInactiveProducts() {
+
+        $produtoDAO = new ProdutoDAO();
+        $products = $produtoDAO->getInactive();
+        return json_encode($products);
+    }
+    
     public static function getProductsByCategory($categoriaId){
     $produtoDAO = new ProdutoDAO();
     //Listando produtos por categoria
     $products = $produtoDAO->getProductByCategory($categoriaId);
     return json_encode($products);
+    }
+    
+    public static function enableProduct($id){
+        $produtoDAO = new ProdutoDAO();
+        
+        $rows = $produtoDAO->enableProduct($id);
+        return $rows;
     }
 
 }

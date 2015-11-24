@@ -27,6 +27,12 @@ $app->get('/products', function () use($app) {
     $response = ProdutoService::getActiveProducts();
     echo $response;
 });
+
+$app->get('/products/inactive', function () use($app) {
+    $app->response()->header('Content-Type', 'application/json');
+    $response = ProdutoService::getInactiveProducts();
+    echo $response;
+});
 $app->get('/products/category/:categoryId', function ($categoryId) use($app) {
     $app->response()->header('Content-Type', 'application/json');
     $response = ProdutoService::getProductsByCategory($categoryId);
@@ -41,13 +47,22 @@ $app->post('/products/', function () use($app) {
     echo $response;
 });
 
-//Cadastro de categorias de produtos
-$app->post('/category/', function () use($app) {
-    //Recuperando o valor do post
-    $categoriesProducts = json_decode($app->request->getBody(), true);
-    //atribuição do valor para o objeto que vai ser persistido no banco.
-    $response = CategoriaProdutoServices::InsertCategory($categoriesProducts);
+$app->get('/products', function () use($app) {
+    $app->response()->header('Content-Type', 'application/json');
+    $response = ProdutoService::getActiveProducts();
     echo $response;
+});
+
+//Cadastro de categorias de produtos
+$app->put('/products/enable/:id', function ($id) use($app) {
+   
+   
+    $app->response()->header('Content-Type', 'application/text'); 
+    if(ProdutoService::enableProduct($id)>0){
+        echo "Produto Ativado com Sucesso!";
+    }else{
+      echo "Não foi possível concluir a ação!";
+    }
 });
 
 $app->get('/categories', function () use($app) {
