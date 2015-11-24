@@ -1,6 +1,6 @@
 var UserService = {
     add: function (user, callback) {
-        
+
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -12,14 +12,30 @@ var UserService = {
                 callback(user);
             },
             error: function () {
-                //console.log('Error: ' + textStatus);
+                
                 callback(null);
             }
         });
 
 
-   },
-    login: function (usuario,callback) {
+    },
+    getUsers: function (callback) {
+         $.ajax({
+            type: 'GET',
+            url: '../api/users',
+            dataType: "json",
+            success: function (response) {
+                callback(response);
+
+            },
+            error: function () {
+                callback(null);
+            }
+
+        });
+
+    },
+    login: function (usuario, callback) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -37,20 +53,35 @@ var UserService = {
         });
 
     },
-    getCategoryUser:function (callback){
-            $.ajax({
+    getCategoryUser: function (callback) {
+        $.ajax({
             type: 'GET',
-	    url: '../api/categories/user',
-	    dataType: "json", 
-	    success: function(response) {
-            callback(response);
-            
+            url: '../api/categories/user',
+            dataType: "json",
+            success: function (response) {
+                callback(response);
+
             },
-            error:function (){
+            error: function () {
                 callback(null);
             }
-           
-         });
+
+        });
+    },
+    remove: function (id,callback) {
+        $.ajax({
+            type: 'DELETE',
+            url: '../api/users/remove/' + id,
+            success: function (response) {
+                console.log('User deleted!');
+                callback(response);
+            },
+            error: function (response) {
+                console.log('Error to delete user with id ' + id);
+                callback(response);
+            }
+        });
+
     }
 
 };

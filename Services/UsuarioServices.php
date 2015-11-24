@@ -21,7 +21,7 @@ class UsuarioServices {
         if (isset($response)) {
             $usuario = new Usuario();
             $usuarioDAO = new UsuarioDAO();
-            
+
             $passCrypt = UsuarioServices::codificar($response["senha"]);
             $usuario->setLogin($response["login"]);
             $usuario->setSenha($passCrypt);
@@ -37,7 +37,7 @@ class UsuarioServices {
                 $responseJson = array(
                     "mensagem" => "Logado com sucesso!",
                     "resposta" => TRUE,
-                    "url"=>"home.html"
+                    "url" => "home.html"
                 );
                 return json_encode($responseJson);
             }
@@ -49,13 +49,25 @@ class UsuarioServices {
             return json_encode($responseJson);
         }
     }
+    public static function getUsers(){
+         $usuarioDAO = new UsuarioDAO();
+         $users=$usuarioDAO->getAll();
+         return json_encode($users);
+    }
+
+
+    public static function remove($id){
+         $usuarioDAO = new UsuarioDAO();
+        $rows= $usuarioDAO->delete($id);
+        return $rows;
+    }
 
     public static function register($response) {
-            $teste;
+       
         if (isset($response["login"]) && isset($response["senha"]) && isset($response["categoria_id"])) {
             $usuario = new Usuario();
             $usuarioDAO = new UsuarioDAO();
-            $passCrypt =UsuarioServices::codificar($response["senha"]);
+            $passCrypt = UsuarioServices::codificar($response["senha"]);
             $usuario->setCategoria_id($response["categoria_id"]);
             $usuario->setLogin($response["login"]);
             $usuario->setSenha($passCrypt);
@@ -83,17 +95,16 @@ class UsuarioServices {
         }
     }
 
-public static function codificar($password){
-       $salt = "1234";
-       $result = crypt($password, $salt);
-       return $result;
+    public static function codificar($password) {
+        $salt = "1234";
+        $result = crypt($password, $salt);
+        return $result;
     }
-    
-    public static function getCategoryUser(){
-         $categoriaUsuarioDAO = new CategoriaUsuarioDAO();
+
+    public static function getCategoryUser() {
+        $categoriaUsuarioDAO = new CategoriaUsuarioDAO();
         $categoriaUsuario = $categoriaUsuarioDAO->getAll();
         return json_encode($categoriaUsuario);
     }
-    
-    
+
 }

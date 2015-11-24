@@ -10,12 +10,12 @@ var ProdutoController ={
         
           var form = document.querySelector('form');
           form.addEventListener('submit', function(event) {
-          ProdutoController.register();
+          ProdutoController.register(form);
           event.preventDefault();
       });
     },
     //método de chamada para cadastrar produto na base de dados
-    register:function(){
+    register:function(form){
           var produto = {
 		descricao: $("#descricao").val(),
 		status: $("#status").children(":selected").attr("id"),
@@ -26,7 +26,7 @@ var ProdutoController ={
             }; 
             
             ProdutoService.add(produto,callback);
-            document.form.reset();
+        form.reset();
         
     },
     //Método de chamada para obter a lista de categorias de produtos

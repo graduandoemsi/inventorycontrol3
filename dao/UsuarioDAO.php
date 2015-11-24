@@ -23,6 +23,7 @@ class UsuarioDAO implements Crud {
             $prepare = $conexao->prepare($sql);
             $prepare->bindValue(":id", $id);
             $prepare->execute();
+           return $prepare->rowCount();
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -86,6 +87,19 @@ class UsuarioDAO implements Crud {
             echo $e->getMessage();
         }
         return $result;
+    }
+     public function getAll() {
+         try {
+        $conexao = ConexaoBanco::getInstance()->getConnection();
+        $sql = "select id,login from usuario";
+        $prepare = $conexao->prepare($sql);      
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $result;
+        
     }
 
 //put your code here

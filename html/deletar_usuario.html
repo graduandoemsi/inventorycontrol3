@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Remover Usuário</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../asset/CSS/principal.css" />
+    </head>
+    <body>
+        <div class="form">
+            <form >
+                <fieldset>
+                    <legend>Remover Usuário</legend>
+                    <div class="campo">  
+                        <label>Usuário</label>
+                        <select  id="users" class="comp_campo">                    
+                        </select>                    
+                    </div>
+                    
+                    <div class="resultado">  
+                        <input type="submit" value="Remover">                    
+                    </div>
+                   
+                </fieldset>
+                
+            </form>           
+        </div>
+        <div id="result" class="resultado"></div>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="../js/userService.js"></script>
+        <script src="../js/removeUserController.js"></script>
+    </body>
+</html>

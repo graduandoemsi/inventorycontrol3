@@ -11,7 +11,7 @@ var EntradaProdutoController = {
             EntradaProdutoController.decrementInventory(form);
             event.preventDefault();
         });
-        document.form.reset();
+      form.reset();
     },
     setSelect: function () {
         var select = document.getElementById("catProdutos");

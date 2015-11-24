@@ -6,12 +6,12 @@ var UsuarioController={
     setForm:function(){
         var form= document.querySelector('form');
          form.addEventListener('submit', function(event) {
-          UsuarioController.getData();
+          UsuarioController.getData(form);
           event.preventDefault();
           });
         
     },
-    getData:function(){
+    getData:function(form){
         var usuario ={
           login:$('#login').val(),
           senha:$('#senha').val()                    
@@ -26,7 +26,7 @@ var UsuarioController={
     }; 
             
        UserService.login(usuario,callback);
-       document.form.reset();
+      form.reset();
     },
     showResult:function (data){
          document.getElementById("response").innerHTML = data.mensagem;  

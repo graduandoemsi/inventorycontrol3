@@ -9,7 +9,7 @@ var CadastroCategoriaController = {
           event.preventDefault();
           });        
     },
-    add:function(){
+    add:function(form){
         var categoria = document.getElementById("descricao").value;
        
         
@@ -18,7 +18,7 @@ var CadastroCategoriaController = {
         }; 
             
         CategoriaService.AddCategory(categoria,callback); 
-        document.form.reset();
+       form.reset();
     },
     showResult:function(data){
         document.getElementById("resposta").innerHTML = data.mensagem; 

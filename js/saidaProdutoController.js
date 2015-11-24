@@ -3,7 +3,6 @@ var SaidaProdutoController ={
     init:function(){
         SaidaProdutoController.setForm();
         SaidaProdutoController.setSelect();
-       
         SaidaProdutoController.showCategory();
       
     },
@@ -22,7 +21,7 @@ var SaidaProdutoController ={
          var categoryId= $('#catProdutos').children(":selected").attr("id");
          SaidaProdutoController.showProducts(categoryId);
       });
-      document.form.reset();
+    
     },
     decrementInventory:function(form){
       var saidaProduto ={
@@ -35,6 +34,7 @@ var SaidaProdutoController ={
             }; 
             
        SaidaProdutoService.add(saidaProduto,callback);
+         form.reset();
     },
     showResult:function(data){
          document.getElementById("resposta").innerHTML = data.mensagem;
@@ -52,7 +52,7 @@ var SaidaProdutoController ={
     },
     addToHTML: function (data,id) {        
             $select = $(id);  
-           
+            $select.append('<option id="0">Selecione</option>');
             $.each(data, function(key,val){
                  $select.append('<option id="' + val.id + '">' + val.descricao + '</option>');
             });
